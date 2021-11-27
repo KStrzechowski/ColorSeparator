@@ -33,9 +33,7 @@ namespace ColorSeparator
 
         private void ShowResults()
         {
-            resultPictureBox1.Size = new Size(_bitmap.Width, _bitmap.Height);
-            resultPictureBox2.Size = new Size(_bitmap.Width, _bitmap.Height);
-            resultPictureBox3.Size = new Size(_bitmap.Width, _bitmap.Height);
+            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap.Width, _bitmap.Height);
             resultPictureBox1.Image = _bitmap;
             resultPictureBox2.Image = _bitmap;
             resultPictureBox3.Image = _bitmap;
