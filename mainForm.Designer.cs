@@ -1,7 +1,7 @@
 ﻿
 namespace ColorSeparator
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -156,13 +156,13 @@ namespace ColorSeparator
             this.modelComboBox.TabIndex = 5;
             this.modelComboBox.SelectedIndexChanged += new System.EventHandler(this.modelComboBox_SelectedIndexChanged);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.mainTableLayoutPanel);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.mainTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
