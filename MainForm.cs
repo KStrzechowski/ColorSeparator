@@ -129,13 +129,11 @@ namespace ColorSeparator
                     var color = bitmap.GetPixel(x, y);
                     var Y = (int)((Kr * color.R) + (Kg * color.G) + (Kb * color.B));
                     var Cb = (int)((color.B - Y) / 1.772 + 128);
-                    //var Cb = (int)(-37.797 * color.R / 255 - 74.203 * color.G / 255 + 112 * color.B / 255) + 128;
                     var Cr = (int)((color.R - Y) / 1.402 + 128);
-                    //var Cr = (int)(0.5 * color.R - 0.419 * color.G - 0.0081 * color.B) + 128;
 
                     resultImages[0].SetPixel(x, y, Color.FromArgb(Y, Y, Y));
-                    resultImages[1].SetPixel(x, y, Color.FromArgb(Y, Y, Cb));
-                    resultImages[2].SetPixel(x, y, Color.FromArgb(Cr, Y, Y));
+                    resultImages[1].SetPixel(x, y, Color.FromArgb(127, 255 - Cb, Cb));
+                    resultImages[2].SetPixel(x, y, Color.FromArgb(Cr, 255 - Cr, 127));
                 }
             }
 
