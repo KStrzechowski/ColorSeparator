@@ -11,6 +11,6 @@ namespace ColorSeparator.Enums
         None = -1,
         YCbCr,
         HSV,
-        Lab,
+        Custom,
     }
 }

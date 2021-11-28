@@ -14,29 +14,66 @@ namespace ColorSeparator
     public partial class ResultForm : Form
     {
         private ToneModel _toneModel;
-        private Bitmap _bitmap;
-        private Graphics _graphics;
+        private Bitmap[] _bitmap;
+        //private Graphics _graphics;
 
-        public ResultForm(ToneModel toneModel, Image image)
+        public ResultForm(ToneModel toneModel, Image[] images)
         {
             InitializeComponent();
-            _toneModel = toneModel;
-            SetBitmap(image);
+            Set(toneModel, images);
             ShowResults();
         }
 
-        private void SetBitmap(Image image)
+        private void Set(ToneModel toneModel, Image[] images)
         {
-            _bitmap = new Bitmap(image);
-            _graphics = Graphics.FromImage(_bitmap);
+            _toneModel = toneModel;
+            _bitmap = Enumerable.Select(images, image => new Bitmap(image)).ToArray();
         }
 
         private void ShowResults()
         {
-            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap.Width, _bitmap.Height);
-            resultPictureBox1.Image = _bitmap;
-            resultPictureBox2.Image = _bitmap;
-            resultPictureBox3.Image = _bitmap;
+            switch (_toneModel)
+            {
+                case ToneModel.YCbCr:
+                    {
+                        YCbCr();
+                        break;
+                    }
+                case ToneModel.HSV:
+                    {
+                        HSV();
+                        break;
+                    }
+                case ToneModel.Custom:
+                    {
+                        Custom();
+                        break;
+                    }
+            }
+
+            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
+            resultPictureBox1.Image = _bitmap[0];
+            resultPictureBox2.Image = _bitmap[1];
+            resultPictureBox3.Image = _bitmap[2];
+        }
+
+        private void YCbCr()
+        {
+            resultLabel1.Text = "Y";
+            resultLabel2.Text = "Cb";
+            resultLabel3.Text = "Cr";
+        }
+        private void HSV()
+        {
+            resultLabel1.Text = "Y";
+            resultLabel2.Text = "Cb";
+            resultLabel3.Text = "Cr";
+        }
+        private void Custom()
+        {
+            resultLabel1.Text = "Y";
+            resultLabel2.Text = "Cb";
+            resultLabel3.Text = "Cr";
         }
     }
 }

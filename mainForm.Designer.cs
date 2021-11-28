@@ -671,7 +671,8 @@ namespace ColorSeparator
             this.modelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modelComboBox.Items.AddRange(new object[] {
             "YCbCr",
-            "HSV"});
+            "HSV",
+            "Custom"});
             this.modelComboBox.Location = new System.Drawing.Point(3, 207);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(265, 28);
