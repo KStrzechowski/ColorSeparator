@@ -44,9 +44,9 @@ namespace ColorSeparator
                         HSV();
                         break;
                     }
-                case ToneModel.Custom:
+                case ToneModel.Lab:
                     {
-                        Custom();
+                        Lab();
                         break;
                     }
             }
@@ -69,7 +69,7 @@ namespace ColorSeparator
             resultLabel2.Text = "Cb";
             resultLabel3.Text = "Cr";
         }
-        private void Custom()
+        private void Lab()
         {
             resultLabel1.Text = "Y";
             resultLabel2.Text = "Cb";

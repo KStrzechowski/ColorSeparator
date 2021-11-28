@@ -50,7 +50,7 @@ namespace ColorSeparator
                         HSVModel();
                         break;
                     }
-                case "Custom":
+                case "Lab":
                     {
                         CustomModel();
                         break;
@@ -72,7 +72,7 @@ namespace ColorSeparator
 
         private void CustomModel()
         {
-            _toneModel = ToneModel.Custom;
+            _toneModel = ToneModel.Lab;
             labSettingsGroupBox.Enabled = true;
         }
 
@@ -103,7 +103,7 @@ namespace ColorSeparator
                     }
                 case "Custom":
                     {
-                        return useCustom();
+                        return useLab();
                     }
             }
             return null;
@@ -142,15 +142,38 @@ namespace ColorSeparator
 
         private Image[] useHsv()
         {
+            double max, min, delta;
+            var bitmap = new Bitmap(_image);
+            int width = bitmap.Width, height = bitmap.Height;
+           
             var resultImages = new Bitmap[3];
             resultImages[0] = new Bitmap(_image);
             resultImages[1] = new Bitmap(_image);
             resultImages[2] = new Bitmap(_image);
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    var color = bitmap.GetPixel(x, y);
+                    min = Math.Min(Math.Min(color.R, color.G), color.B);
+                    max = Math.Max(Math.Max(color.R, color.G), color.B);
+                    delta = max - min;
+
+                    resultImages[0].SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    resultImages[1].SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    resultImages[2].SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                }
+            }
+
+
             return resultImages;
         }
 
-        private Image[] useCustom()
+        private Image[] useLab()
         {
+
+
             var resultImages = new Bitmap[3];
             resultImages[0] = new Bitmap(_image);
             resultImages[1] = new Bitmap(_image);
