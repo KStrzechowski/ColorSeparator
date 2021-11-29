@@ -159,10 +159,32 @@ namespace ColorSeparator
                     min = Math.Min(Math.Min(color.R, color.G), color.B);
                     max = Math.Max(Math.Max(color.R, color.G), color.B);
                     delta = max - min;
+                    double H, S, V;
+                    V = max / 255;
+                    
+                    if (delta == 0)
+                        H = 0;
+                    else if (max == color.R)
+                        H = (color.G - color.B) / delta;
+                    else if (max == color.G)
+                        H = 2 + (color.B - color.R) / delta;
+                    else
+                        H = 4 + (color.R - color.G) / delta;
+                    H *= 60;
 
-                    resultImages[0].SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                    resultImages[1].SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                    resultImages[2].SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    if (V == 0)
+                        S = 0;
+                    else
+                        S = delta / 255 / V;
+
+                    if (H < 0)
+                        H += 360;
+                    H = H * 255 / 360;
+                    V *= 255;
+                    S *= 255;
+                    resultImages[0].SetPixel(x, y, Color.FromArgb((int)H, (int)H, (int)H));
+                    resultImages[1].SetPixel(x, y, Color.FromArgb((int)S, (int)S, (int)S));
+                    resultImages[2].SetPixel(x, y, Color.FromArgb((int)V, (int)V, (int)V));
                 }
             }
 
@@ -172,8 +194,6 @@ namespace ColorSeparator
 
         private Image[] useLab()
         {
-
-
             var resultImages = new Bitmap[3];
             resultImages[0] = new Bitmap(_image);
             resultImages[1] = new Bitmap(_image);
