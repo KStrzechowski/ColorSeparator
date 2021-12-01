@@ -89,16 +89,21 @@ namespace ColorSeparator
                 var label = new Label();
                 label.Text = _labels[i];
                 label.TextAlign = ContentAlignment.MiddleCenter;
+                label.Dock = DockStyle.Fill;
+
                 var pictureBox = new PictureBox();
                 pictureBox.Size = new Size(_bitmap[i].Width, _bitmap[i].Height);
                 pictureBox.Image = _bitmap[i];
+                pictureBox.Dock = DockStyle.Fill;
 
                 mainTableLayoutPanel.RowCount++;
-                var rowStyle = mainTableLayoutPanel.RowStyles[mainTableLayoutPanel.RowCount - 1];
-                mainTableLayoutPanel.RowStyles.Add(new RowStyle(rowStyle.SizeType, rowStyle.Height));
                 mainTableLayoutPanel.Controls.Add(label);
                 mainTableLayoutPanel.Controls.Add(pictureBox);
+                mainTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, pictureBox.Height));
             }
+
+            for (int i = 3; i < n; i++)
+                mainTableLayoutPanel.RowStyles[i].Height = _bitmap[i].Height;
         }
     }
 }
