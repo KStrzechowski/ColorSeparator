@@ -46,6 +46,7 @@ namespace ColorSeparator
             // 
             // mainTableLayoutPanel
             // 
+            this.mainTableLayoutPanel.AutoScroll = true;
             this.mainTableLayoutPanel.AutoScrollMargin = new System.Drawing.Size(0, 250);
             this.mainTableLayoutPanel.AutoScrollMinSize = new System.Drawing.Size(0, 250);
             this.mainTableLayoutPanel.AutoSize = true;
@@ -148,9 +149,12 @@ namespace ColorSeparator
             // 
             // mainPanel
             // 
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.AutoScroll = true;
+            this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainPanel.Controls.Add(this.mainTableLayoutPanel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(984, 561);

@@ -13,77 +13,92 @@ namespace ColorSeparator
 {
     public partial class ResultForm : Form
     {
-        private ToneModel _toneModel;
+        private string[] _labels;
         private Bitmap[] _bitmap;
-        //private Graphics _graphics;
-
-        public ResultForm(ToneModel toneModel, Image[] images)
+        public ResultForm(string[] labels, Image[] images)
         {
             InitializeComponent();
-            Set(toneModel, images);
+            Set(labels, images);
             ShowResults();
         }
 
-        private void Set(ToneModel toneModel, Image[] images)
+        private void Set(string[] labels, Image[] images)
         {
-            _toneModel = toneModel;
+            _labels = labels;
             _bitmap = Enumerable.Select(images, image => new Bitmap(image)).ToArray();
         }
 
         private void ShowResults()
         {
-            switch (_toneModel)
+            int n = _labels.Length;
+            if (n <= 0 || _bitmap.Length < n)
+                throw new ArgumentException();
+
+            if (n == 3)
+                SetExactlyThree();
+            else if (n < 3)
+                SetLess(n);
+            else
+                SetMore(n);
+
+        }
+
+        private void SetExactlyThree()
+        {
+            resultLabel1.Text = _labels[0];
+            resultLabel2.Text = _labels[1];
+            resultLabel3.Text = _labels[2];
+
+            resultPictureBox1.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
+            resultPictureBox2.Size = new Size(_bitmap[1].Width, _bitmap[1].Height);
+            resultPictureBox3.Size = new Size(_bitmap[2].Width, _bitmap[2].Height);
+            resultPictureBox1.Image = _bitmap[0];
+            resultPictureBox2.Image = _bitmap[1];
+            resultPictureBox3.Image = _bitmap[2];
+        }
+
+        private void SetLess(int n)
+        {
+            mainTableLayoutPanel.Controls.Remove(resultLabel3);
+            mainTableLayoutPanel.Controls.Remove(resultPictureBox3);
+            mainTableLayoutPanel.RowCount--;
+            if (n == 1)
             {
-                case ToneModel.YCbCr:
-                    {
-                        YCbCr();
-                        break;
-                    }
-                case ToneModel.HSV:
-                    {
-                        HSV();
-                        break;
-                    }
-                case ToneModel.Lab:
-                    {
-                        Lab();
-                        break;
-                    }
+                mainTableLayoutPanel.Controls.Remove(resultLabel2);
+                mainTableLayoutPanel.Controls.Remove(resultPictureBox2);
+                mainTableLayoutPanel.RowCount--;
             }
+            else
+            {
+                resultLabel2.Text = _labels[1];
+                resultPictureBox2.Size = new Size(_bitmap[1].Width, _bitmap[1].Height);
+                resultPictureBox2.Image = _bitmap[1];
+            }
+
+            resultLabel1.Text = _labels[0];
+            resultPictureBox1.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
+            resultPictureBox1.Image = _bitmap[0];
         }
 
-        private void YCbCr()
+        private void SetMore(int n)
         {
-            resultLabel1.Text = "Y";
-            resultLabel2.Text = "Cb";
-            resultLabel3.Text = "Cr";
+            SetExactlyThree();
 
-            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
-            resultPictureBox1.Image = _bitmap[0];
-            resultPictureBox2.Image = _bitmap[1];
-            resultPictureBox3.Image = _bitmap[2];
-        }
-        private void HSV()
-        {
-            resultLabel1.Text = "H";
-            resultLabel2.Text = "S";
-            resultLabel3.Text = "V";
+            for (int i = 3; i < n; i++)
+            {
+                var label = new Label();
+                label.Text = _labels[i];
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                var pictureBox = new PictureBox();
+                pictureBox.Size = new Size(_bitmap[i].Width, _bitmap[i].Height);
+                pictureBox.Image = _bitmap[i];
 
-            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
-            resultPictureBox1.Image = _bitmap[0];
-            resultPictureBox2.Image = _bitmap[1];
-            resultPictureBox3.Image = _bitmap[2];
-        }
-        private void Lab()
-        {
-            resultLabel1.Text = "L";
-            resultLabel2.Text = "a";
-            resultLabel3.Text = "b";
-
-            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
-            resultPictureBox1.Image = _bitmap[0];
-            resultPictureBox2.Image = _bitmap[1];
-            resultPictureBox3.Image = _bitmap[2];
+                mainTableLayoutPanel.RowCount++;
+                var rowStyle = mainTableLayoutPanel.RowStyles[mainTableLayoutPanel.RowCount - 1];
+                mainTableLayoutPanel.RowStyles.Add(new RowStyle(rowStyle.SizeType, rowStyle.Height));
+                mainTableLayoutPanel.Controls.Add(label);
+                mainTableLayoutPanel.Controls.Add(pictureBox);
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace ColorSeparator
     public partial class MainForm : Form
     {
         private Image _image;
+        private string[] _labels;
         private ToneModel _toneModel;
         public MainForm()
         {
@@ -80,18 +81,21 @@ namespace ColorSeparator
         private void YCbCrModel()
         {
             _toneModel = ToneModel.YCbCr;
+            _labels = new string[] { "Y", "Cb", "Cr" };
             labSettingsGroupBox.Enabled = false;
         }
 
         private void HSVModel()
         {
             _toneModel = ToneModel.HSV;
+            _labels = new string[] { "H", "S", "V" };
             labSettingsGroupBox.Enabled = false;
         }
 
         private void LabModel()
         {
             _toneModel = ToneModel.Lab;
+            _labels = new string[] { "L", "a", "b" };
             labSettingsGroupBox.Enabled = true;
         }
 
@@ -102,7 +106,7 @@ namespace ColorSeparator
                 var resultImages = Seperate();
                 if (resultImages != null)
                 {
-                    var resultForm = new ResultForm(_toneModel, resultImages);
+                    var resultForm = new ResultForm(_labels, resultImages);
                     resultForm.ShowDialog();
                 }
             }
@@ -110,17 +114,17 @@ namespace ColorSeparator
 
         private Image[] Seperate()
         {
-            switch (modelComboBox.Items[modelComboBox.SelectedIndex].ToString())
+            switch (_toneModel)
             {
-                case "YCbCr":
+                case ToneModel.YCbCr:
                     {
                         return useYCbCr();
                     }
-                case "HSV":
+                case ToneModel.HSV:
                     {
                         return useHsv();
                     }
-                case "Lab":
+                case ToneModel.Lab:
                     {
                         return useLab();
                     }
