@@ -99,6 +99,39 @@ namespace ColorSeparator
             labSettingsGroupBox.Enabled = true;
         }
 
+        private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (_toneModel != ToneModel.None && _image != null)
+            {
+                var label = new string[] { "Greyscale" };
+                var resultImage = ToGreyscale();
+                if (resultImage != null)
+                {
+                    var resultForm = new ResultForm(label, new Image[] { resultImage });
+                    resultForm.ShowDialog();
+                }
+            }
+        }
+
+        private Image ToGreyscale()
+        {
+            var bitmap = new Bitmap(_image);
+            int width = bitmap.Width, height = bitmap.Height;
+            var resultImage = new Bitmap(_image);
+            
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    var color = bitmap.GetPixel(x, y);
+                    int gray = color.R / 3 + color.G / 3 + color.B / 3;
+                    resultImage.SetPixel(x, y, Color.FromArgb(gray, gray, gray));
+                }
+            }
+
+            return resultImage;
+        }
+
         private void separateChannelsButton_MouseDown(object sender, MouseEventArgs e)
         {
             if (_toneModel != ToneModel.None && _image != null)
@@ -333,11 +366,6 @@ namespace ColorSeparator
              double b = 200 * (fy - fz);
 
             return new double[] { L, a, b };
-        }
-
-        private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

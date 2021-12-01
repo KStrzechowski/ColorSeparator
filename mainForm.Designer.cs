@@ -103,19 +103,18 @@ namespace ColorSeparator
             this.optionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.optionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.optionsTableLayoutPanel.Controls.Add(this.greyscaleButton, 0, 0);
-            this.optionsTableLayoutPanel.Controls.Add(this.labSettingsGroupBox, 0, 5);
-            this.optionsTableLayoutPanel.Controls.Add(this.separateChannelsButton, 0, 4);
-            this.optionsTableLayoutPanel.Controls.Add(this.loadImageButton, 0, 2);
-            this.optionsTableLayoutPanel.Controls.Add(this.modelComboBox, 0, 3);
+            this.optionsTableLayoutPanel.Controls.Add(this.labSettingsGroupBox, 0, 4);
+            this.optionsTableLayoutPanel.Controls.Add(this.separateChannelsButton, 0, 3);
+            this.optionsTableLayoutPanel.Controls.Add(this.loadImageButton, 0, 1);
+            this.optionsTableLayoutPanel.Controls.Add(this.modelComboBox, 0, 2);
             this.optionsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.optionsTableLayoutPanel.Name = "optionsTableLayoutPanel";
-            this.optionsTableLayoutPanel.RowCount = 6;
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.048119F));
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.97264F));
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.048119F));
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.048119F));
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.048119F));
-            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.83488F));
+            this.optionsTableLayoutPanel.RowCount = 5;
+            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.24022F));
+            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.000094F));
+            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.000094F));
+            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.000094F));
+            this.optionsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.7595F));
             this.optionsTableLayoutPanel.Size = new System.Drawing.Size(271, 553);
             this.optionsTableLayoutPanel.TabIndex = 0;
             // 
@@ -141,9 +140,9 @@ namespace ColorSeparator
             this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel2);
             this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.labSettingsGroupBox.Enabled = false;
-            this.labSettingsGroupBox.Location = new System.Drawing.Point(3, 273);
+            this.labSettingsGroupBox.Location = new System.Drawing.Point(3, 180);
             this.labSettingsGroupBox.Name = "labSettingsGroupBox";
-            this.labSettingsGroupBox.Size = new System.Drawing.Size(265, 277);
+            this.labSettingsGroupBox.Size = new System.Drawing.Size(265, 370);
             this.labSettingsGroupBox.TabIndex = 0;
             this.labSettingsGroupBox.TabStop = false;
             this.labSettingsGroupBox.Text = "Lab Settings";
@@ -175,7 +174,7 @@ namespace ColorSeparator
             this.tableLayoutPanel2.Controls.Add(this.whitePointXNumericUpDown, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.whitePointYNumericUpDown, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.gammaNumericUpDown, 2, 5);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 139);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 142);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -185,7 +184,7 @@ namespace ColorSeparator
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 141);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 233);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // chromaticityLabel
@@ -197,7 +196,7 @@ namespace ColorSeparator
             this.chromaticityLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.chromaticityLabel.Location = new System.Drawing.Point(3, 0);
             this.chromaticityLabel.Name = "chromaticityLabel";
-            this.chromaticityLabel.Size = new System.Drawing.Size(82, 23);
+            this.chromaticityLabel.Size = new System.Drawing.Size(82, 38);
             this.chromaticityLabel.TabIndex = 1;
             this.chromaticityLabel.Text = "Chromaticity";
             this.chromaticityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,7 +210,7 @@ namespace ColorSeparator
             this.xLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.xLabel.Location = new System.Drawing.Point(91, 0);
             this.xLabel.Name = "xLabel";
-            this.xLabel.Size = new System.Drawing.Size(82, 23);
+            this.xLabel.Size = new System.Drawing.Size(82, 38);
             this.xLabel.TabIndex = 2;
             this.xLabel.Text = "x";
             this.xLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,7 +224,7 @@ namespace ColorSeparator
             this.yLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.yLabel.Location = new System.Drawing.Point(179, 0);
             this.yLabel.Name = "yLabel";
-            this.yLabel.Size = new System.Drawing.Size(83, 23);
+            this.yLabel.Size = new System.Drawing.Size(83, 38);
             this.yLabel.TabIndex = 3;
             this.yLabel.Text = "y";
             this.yLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -237,9 +236,9 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.redLabel.AutoSize = true;
             this.redLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.redLabel.Location = new System.Drawing.Point(3, 23);
+            this.redLabel.Location = new System.Drawing.Point(3, 38);
             this.redLabel.Name = "redLabel";
-            this.redLabel.Size = new System.Drawing.Size(82, 23);
+            this.redLabel.Size = new System.Drawing.Size(82, 38);
             this.redLabel.TabIndex = 4;
             this.redLabel.Text = "Red primary";
             this.redLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -251,9 +250,9 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.greenLabel.AutoSize = true;
             this.greenLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.greenLabel.Location = new System.Drawing.Point(3, 46);
+            this.greenLabel.Location = new System.Drawing.Point(3, 76);
             this.greenLabel.Name = "greenLabel";
-            this.greenLabel.Size = new System.Drawing.Size(82, 23);
+            this.greenLabel.Size = new System.Drawing.Size(82, 38);
             this.greenLabel.TabIndex = 5;
             this.greenLabel.Text = "Green primary";
             this.greenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -266,7 +265,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.redXNumericUpDown.Location = new System.Drawing.Point(91, 26);
+            this.redXNumericUpDown.Location = new System.Drawing.Point(91, 41);
             this.redXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -294,9 +293,9 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.blueLabel.AutoSize = true;
             this.blueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.blueLabel.Location = new System.Drawing.Point(3, 69);
+            this.blueLabel.Location = new System.Drawing.Point(3, 114);
             this.blueLabel.Name = "blueLabel";
-            this.blueLabel.Size = new System.Drawing.Size(82, 23);
+            this.blueLabel.Size = new System.Drawing.Size(82, 38);
             this.blueLabel.TabIndex = 7;
             this.blueLabel.Text = "Blue primary";
             this.blueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -308,23 +307,20 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.whitePointLabel.AutoSize = true;
             this.whitePointLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.whitePointLabel.Location = new System.Drawing.Point(3, 92);
+            this.whitePointLabel.Location = new System.Drawing.Point(3, 152);
             this.whitePointLabel.Name = "whitePointLabel";
-            this.whitePointLabel.Size = new System.Drawing.Size(82, 23);
+            this.whitePointLabel.Size = new System.Drawing.Size(82, 38);
             this.whitePointLabel.TabIndex = 8;
             this.whitePointLabel.Text = "White point";
             this.whitePointLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gammaLabel
             // 
-            this.gammaLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gammaLabel.AutoSize = true;
             this.gammaLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gammaLabel.Location = new System.Drawing.Point(91, 115);
+            this.gammaLabel.Location = new System.Drawing.Point(91, 190);
             this.gammaLabel.Name = "gammaLabel";
-            this.gammaLabel.Size = new System.Drawing.Size(82, 26);
+            this.gammaLabel.Size = new System.Drawing.Size(49, 15);
             this.gammaLabel.TabIndex = 6;
             this.gammaLabel.Text = "Gamma";
             this.gammaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,7 +333,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.redYNumericUpDown.Location = new System.Drawing.Point(179, 26);
+            this.redYNumericUpDown.Location = new System.Drawing.Point(179, 41);
             this.redYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -366,7 +362,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.greenXNumericUpDown.Location = new System.Drawing.Point(91, 49);
+            this.greenXNumericUpDown.Location = new System.Drawing.Point(91, 79);
             this.greenXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -395,7 +391,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.greenYNumericUpDown.Location = new System.Drawing.Point(179, 49);
+            this.greenYNumericUpDown.Location = new System.Drawing.Point(179, 79);
             this.greenYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -424,7 +420,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.blueXNumericUpDown.Location = new System.Drawing.Point(91, 72);
+            this.blueXNumericUpDown.Location = new System.Drawing.Point(91, 117);
             this.blueXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -453,7 +449,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.blueYNumericUpDown.Location = new System.Drawing.Point(179, 72);
+            this.blueYNumericUpDown.Location = new System.Drawing.Point(179, 117);
             this.blueYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -482,7 +478,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.whitePointXNumericUpDown.Location = new System.Drawing.Point(91, 95);
+            this.whitePointXNumericUpDown.Location = new System.Drawing.Point(91, 155);
             this.whitePointXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -511,7 +507,7 @@ namespace ColorSeparator
             0,
             0,
             327680});
-            this.whitePointYNumericUpDown.Location = new System.Drawing.Point(179, 95);
+            this.whitePointYNumericUpDown.Location = new System.Drawing.Point(179, 155);
             this.whitePointYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -540,7 +536,7 @@ namespace ColorSeparator
             0,
             0,
             131072});
-            this.gammaNumericUpDown.Location = new System.Drawing.Point(179, 118);
+            this.gammaNumericUpDown.Location = new System.Drawing.Point(179, 193);
             this.gammaNumericUpDown.Maximum = new decimal(new int[] {
             3,
             0,
@@ -577,10 +573,10 @@ namespace ColorSeparator
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.54717F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.45283F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(265, 118);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(262, 111);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // IlluminantcomboBox
@@ -593,9 +589,9 @@ namespace ColorSeparator
             "D50",
             "D65",
             "E"});
-            this.IlluminantcomboBox.Location = new System.Drawing.Point(135, 74);
+            this.IlluminantcomboBox.Location = new System.Drawing.Point(134, 59);
             this.IlluminantcomboBox.Name = "IlluminantcomboBox";
-            this.IlluminantcomboBox.Size = new System.Drawing.Size(127, 28);
+            this.IlluminantcomboBox.Size = new System.Drawing.Size(125, 28);
             this.IlluminantcomboBox.TabIndex = 10;
             // 
             // illuminantLabel
@@ -605,9 +601,9 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Right)));
             this.illuminantLabel.AutoSize = true;
             this.illuminantLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.illuminantLabel.Location = new System.Drawing.Point(3, 59);
+            this.illuminantLabel.Location = new System.Drawing.Point(3, 36);
             this.illuminantLabel.Name = "illuminantLabel";
-            this.illuminantLabel.Size = new System.Drawing.Size(126, 59);
+            this.illuminantLabel.Size = new System.Drawing.Size(125, 75);
             this.illuminantLabel.TabIndex = 1;
             this.illuminantLabel.Text = "Predefined illuminant";
             this.illuminantLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -621,7 +617,7 @@ namespace ColorSeparator
             this.colorProfileLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.colorProfileLabel.Location = new System.Drawing.Point(3, 0);
             this.colorProfileLabel.Name = "colorProfileLabel";
-            this.colorProfileLabel.Size = new System.Drawing.Size(126, 59);
+            this.colorProfileLabel.Size = new System.Drawing.Size(125, 36);
             this.colorProfileLabel.TabIndex = 0;
             this.colorProfileLabel.Text = "Predefined color profile";
             this.colorProfileLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -636,16 +632,18 @@ namespace ColorSeparator
             "AppleRGB",
             "CIERGB",
             "WideGamut"});
-            this.colorProfileComboBox.Location = new System.Drawing.Point(135, 15);
+            this.colorProfileComboBox.Location = new System.Drawing.Point(134, 4);
             this.colorProfileComboBox.Name = "colorProfileComboBox";
-            this.colorProfileComboBox.Size = new System.Drawing.Size(127, 28);
+            this.colorProfileComboBox.Size = new System.Drawing.Size(125, 28);
             this.colorProfileComboBox.TabIndex = 9;
             // 
             // separateChannelsButton
             // 
-            this.separateChannelsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.separateChannelsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsTableLayoutPanel.SetColumnSpan(this.separateChannelsButton, 2);
-            this.separateChannelsButton.Location = new System.Drawing.Point(3, 240);
+            this.separateChannelsButton.Location = new System.Drawing.Point(3, 147);
             this.separateChannelsButton.Name = "separateChannelsButton";
             this.separateChannelsButton.Size = new System.Drawing.Size(265, 27);
             this.separateChannelsButton.TabIndex = 2;
@@ -655,9 +653,11 @@ namespace ColorSeparator
             // 
             // loadImageButton
             // 
-            this.loadImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadImageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsTableLayoutPanel.SetColumnSpan(this.loadImageButton, 2);
-            this.loadImageButton.Location = new System.Drawing.Point(3, 174);
+            this.loadImageButton.Location = new System.Drawing.Point(3, 81);
             this.loadImageButton.Name = "loadImageButton";
             this.loadImageButton.Size = new System.Drawing.Size(265, 27);
             this.loadImageButton.TabIndex = 4;
@@ -667,14 +667,16 @@ namespace ColorSeparator
             // 
             // modelComboBox
             // 
-            this.modelComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.modelComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsTableLayoutPanel.SetColumnSpan(this.modelComboBox, 2);
             this.modelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modelComboBox.Items.AddRange(new object[] {
             "YCbCr",
             "HSV",
             "Lab"});
-            this.modelComboBox.Location = new System.Drawing.Point(3, 207);
+            this.modelComboBox.Location = new System.Drawing.Point(3, 114);
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(265, 28);
             this.modelComboBox.TabIndex = 5;
