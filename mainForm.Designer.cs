@@ -44,10 +44,10 @@ namespace ColorSeparator
             this.whitePointLabel = new System.Windows.Forms.Label();
             this.gammaLabel = new System.Windows.Forms.Label();
             this.redYNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.greenXumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.greenYumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.blueXumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.blueYumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.greenXNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.greenYNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.blueXNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.blueYNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.whitePointXNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.whitePointYNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.gammaNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -66,10 +66,10 @@ namespace ColorSeparator
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.redXNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.redYNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.greenXumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.greenYumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueXumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueYumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.greenXNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.greenYNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueXNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueYNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointXNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointYNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaNumericUpDown)).BeginInit();
@@ -140,6 +140,7 @@ namespace ColorSeparator
             this.optionsTableLayoutPanel.SetColumnSpan(this.labSettingsGroupBox, 2);
             this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel2);
             this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel1);
+            this.labSettingsGroupBox.Enabled = false;
             this.labSettingsGroupBox.Location = new System.Drawing.Point(3, 273);
             this.labSettingsGroupBox.Name = "labSettingsGroupBox";
             this.labSettingsGroupBox.Size = new System.Drawing.Size(265, 277);
@@ -167,10 +168,10 @@ namespace ColorSeparator
             this.tableLayoutPanel2.Controls.Add(this.whitePointLabel, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.gammaLabel, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.redYNumericUpDown, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.greenXumericUpDown, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.greenYumericUpDown, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.blueXumericUpDown, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.blueYumericUpDown, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.greenXNumericUpDown, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.greenYNumericUpDown, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.blueXNumericUpDown, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.blueYNumericUpDown, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.whitePointXNumericUpDown, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.whitePointYNumericUpDown, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.gammaNumericUpDown, 2, 5);
@@ -357,117 +358,117 @@ namespace ColorSeparator
             0,
             65536});
             // 
-            // greenXumericUpDown
+            // greenXNumericUpDown
             // 
-            this.greenXumericUpDown.DecimalPlaces = 5;
-            this.greenXumericUpDown.Increment = new decimal(new int[] {
+            this.greenXNumericUpDown.DecimalPlaces = 5;
+            this.greenXNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.greenXumericUpDown.Location = new System.Drawing.Point(91, 49);
-            this.greenXumericUpDown.Maximum = new decimal(new int[] {
+            this.greenXNumericUpDown.Location = new System.Drawing.Point(91, 49);
+            this.greenXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.greenXumericUpDown.Minimum = new decimal(new int[] {
+            this.greenXNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.greenXumericUpDown.Name = "greenXumericUpDown";
-            this.greenXumericUpDown.Size = new System.Drawing.Size(82, 27);
-            this.greenXumericUpDown.TabIndex = 10;
-            this.greenXumericUpDown.ThousandsSeparator = true;
-            this.greenXumericUpDown.Value = new decimal(new int[] {
+            this.greenXNumericUpDown.Name = "greenXNumericUpDown";
+            this.greenXNumericUpDown.Size = new System.Drawing.Size(82, 27);
+            this.greenXNumericUpDown.TabIndex = 10;
+            this.greenXNumericUpDown.ThousandsSeparator = true;
+            this.greenXNumericUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
             65536});
             // 
-            // greenYumericUpDown
+            // greenYNumericUpDown
             // 
-            this.greenYumericUpDown.DecimalPlaces = 5;
-            this.greenYumericUpDown.Increment = new decimal(new int[] {
+            this.greenYNumericUpDown.DecimalPlaces = 5;
+            this.greenYNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.greenYumericUpDown.Location = new System.Drawing.Point(179, 49);
-            this.greenYumericUpDown.Maximum = new decimal(new int[] {
+            this.greenYNumericUpDown.Location = new System.Drawing.Point(179, 49);
+            this.greenYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.greenYumericUpDown.Minimum = new decimal(new int[] {
+            this.greenYNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.greenYumericUpDown.Name = "greenYumericUpDown";
-            this.greenYumericUpDown.Size = new System.Drawing.Size(82, 27);
-            this.greenYumericUpDown.TabIndex = 11;
-            this.greenYumericUpDown.ThousandsSeparator = true;
-            this.greenYumericUpDown.Value = new decimal(new int[] {
+            this.greenYNumericUpDown.Name = "greenYNumericUpDown";
+            this.greenYNumericUpDown.Size = new System.Drawing.Size(82, 27);
+            this.greenYNumericUpDown.TabIndex = 11;
+            this.greenYNumericUpDown.ThousandsSeparator = true;
+            this.greenYNumericUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
             65536});
             // 
-            // blueXumericUpDown
+            // blueXNumericUpDown
             // 
-            this.blueXumericUpDown.DecimalPlaces = 5;
-            this.blueXumericUpDown.Increment = new decimal(new int[] {
+            this.blueXNumericUpDown.DecimalPlaces = 5;
+            this.blueXNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.blueXumericUpDown.Location = new System.Drawing.Point(91, 72);
-            this.blueXumericUpDown.Maximum = new decimal(new int[] {
+            this.blueXNumericUpDown.Location = new System.Drawing.Point(91, 72);
+            this.blueXNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.blueXumericUpDown.Minimum = new decimal(new int[] {
+            this.blueXNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.blueXumericUpDown.Name = "blueXumericUpDown";
-            this.blueXumericUpDown.Size = new System.Drawing.Size(82, 27);
-            this.blueXumericUpDown.TabIndex = 12;
-            this.blueXumericUpDown.ThousandsSeparator = true;
-            this.blueXumericUpDown.Value = new decimal(new int[] {
+            this.blueXNumericUpDown.Name = "blueXNumericUpDown";
+            this.blueXNumericUpDown.Size = new System.Drawing.Size(82, 27);
+            this.blueXNumericUpDown.TabIndex = 12;
+            this.blueXNumericUpDown.ThousandsSeparator = true;
+            this.blueXNumericUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
             65536});
             // 
-            // blueYumericUpDown
+            // blueYNumericUpDown
             // 
-            this.blueYumericUpDown.DecimalPlaces = 5;
-            this.blueYumericUpDown.Increment = new decimal(new int[] {
+            this.blueYNumericUpDown.DecimalPlaces = 5;
+            this.blueYNumericUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.blueYumericUpDown.Location = new System.Drawing.Point(179, 72);
-            this.blueYumericUpDown.Maximum = new decimal(new int[] {
+            this.blueYNumericUpDown.Location = new System.Drawing.Point(179, 72);
+            this.blueYNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.blueYumericUpDown.Minimum = new decimal(new int[] {
+            this.blueYNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             327680});
-            this.blueYumericUpDown.Name = "blueYumericUpDown";
-            this.blueYumericUpDown.Size = new System.Drawing.Size(82, 27);
-            this.blueYumericUpDown.TabIndex = 13;
-            this.blueYumericUpDown.ThousandsSeparator = true;
-            this.blueYumericUpDown.Value = new decimal(new int[] {
+            this.blueYNumericUpDown.Name = "blueYNumericUpDown";
+            this.blueYNumericUpDown.Size = new System.Drawing.Size(82, 27);
+            this.blueYNumericUpDown.TabIndex = 13;
+            this.blueYNumericUpDown.ThousandsSeparator = true;
+            this.blueYNumericUpDown.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -705,10 +706,10 @@ namespace ColorSeparator
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.redXNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.redYNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.greenXumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.greenYumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueXumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueYumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.greenXNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.greenYNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueXNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueYNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointXNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointYNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaNumericUpDown)).EndInit();
@@ -745,10 +746,10 @@ namespace ColorSeparator
         private System.Windows.Forms.ComboBox colorProfileComboBox;
         private System.Windows.Forms.NumericUpDown redXNumericUpDown;
         private System.Windows.Forms.NumericUpDown redYNumericUpDown;
-        private System.Windows.Forms.NumericUpDown greenXumericUpDown;
-        private System.Windows.Forms.NumericUpDown greenYumericUpDown;
-        private System.Windows.Forms.NumericUpDown blueXumericUpDown;
-        private System.Windows.Forms.NumericUpDown blueYumericUpDown;
+        private System.Windows.Forms.NumericUpDown greenXNumericUpDown;
+        private System.Windows.Forms.NumericUpDown greenYNumericUpDown;
+        private System.Windows.Forms.NumericUpDown blueXNumericUpDown;
+        private System.Windows.Forms.NumericUpDown blueYNumericUpDown;
         private System.Windows.Forms.NumericUpDown whitePointXNumericUpDown;
         private System.Windows.Forms.NumericUpDown whitePointYNumericUpDown;
         private System.Windows.Forms.NumericUpDown gammaNumericUpDown;

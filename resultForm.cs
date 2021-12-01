@@ -50,8 +50,6 @@ namespace ColorSeparator
                         break;
                     }
             }
-
-         
         }
 
         private void YCbCr()
@@ -68,8 +66,8 @@ namespace ColorSeparator
         private void HSV()
         {
             resultLabel1.Text = "H";
-            resultLabel1.Text = "S";
-            resultLabel1.Text = "V";
+            resultLabel2.Text = "S";
+            resultLabel3.Text = "V";
 
             resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
             resultPictureBox1.Image = _bitmap[0];
@@ -78,9 +76,14 @@ namespace ColorSeparator
         }
         private void Lab()
         {
-            resultLabel1.Text = "Y";
-            resultLabel2.Text = "Cb";
-            resultLabel3.Text = "Cr";
+            resultLabel1.Text = "L";
+            resultLabel2.Text = "a";
+            resultLabel3.Text = "b";
+
+            resultPictureBox1.Size = resultPictureBox2.Size = resultPictureBox3.Size = new Size(_bitmap[0].Width, _bitmap[0].Height);
+            resultPictureBox1.Image = _bitmap[0];
+            resultPictureBox2.Image = _bitmap[1];
+            resultPictureBox3.Image = _bitmap[2];
         }
     }
 }

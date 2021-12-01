@@ -18,7 +18,26 @@ namespace ColorSeparator
         public MainForm()
         {
             InitializeComponent();
-            _toneModel = ToneModel.None;
+            SetInitial();
+        }
+
+        private void SetInitial()
+        {
+            modelComboBox.SelectedIndex = 0;
+
+            IlluminantcomboBox.SelectedIndex = 3;
+            colorProfileComboBox.SelectedIndex = 0;
+
+            redXNumericUpDown.Value = (decimal)0.64;
+            redYNumericUpDown.Value = (decimal)0.33;
+            greenXNumericUpDown.Value = (decimal)0.3;
+            greenYNumericUpDown.Value = (decimal)0.6;
+            blueXNumericUpDown.Value = (decimal)0.15;
+            blueYNumericUpDown.Value = (decimal)0.06;
+
+            whitePointXNumericUpDown.Value = (decimal)0.3127;
+            whitePointYNumericUpDown.Value = (decimal)0.3290;
+            gammaNumericUpDown.Value = (decimal)2.20;
         }
 
         private void loadImageButton_MouseDown(object sender, MouseEventArgs e)
@@ -52,7 +71,7 @@ namespace ColorSeparator
                     }
                 case "Lab":
                     {
-                        CustomModel();
+                        LabModel();
                         break;
                     }
             }
@@ -70,7 +89,7 @@ namespace ColorSeparator
             labSettingsGroupBox.Enabled = false;
         }
 
-        private void CustomModel()
+        private void LabModel()
         {
             _toneModel = ToneModel.Lab;
             labSettingsGroupBox.Enabled = true;
@@ -101,7 +120,7 @@ namespace ColorSeparator
                     {
                         return useHsv();
                     }
-                case "Custom":
+                case "Lab":
                     {
                         return useLab();
                     }
@@ -194,11 +213,122 @@ namespace ColorSeparator
 
         private Image[] useLab()
         {
+            var bitmap = new Bitmap(_image);
+            int width = bitmap.Width, height = bitmap.Height;
             var resultImages = new Bitmap[3];
             resultImages[0] = new Bitmap(_image);
             resultImages[1] = new Bitmap(_image);
             resultImages[2] = new Bitmap(_image);
+            double[,] matrixM = MatrixM();
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    var color = bitmap.GetPixel(x, y);
+                    double gamma = (double)gammaNumericUpDown.Value;
+                    double[] xyz = RgbToXyz(Math.Pow(color.R, gamma), Math.Pow(color.G, gamma), Math.Pow(color.B, gamma), matrixM);
+                    double[] lab = XyzToLab(xyz);
+
+                    resultImages[0].SetPixel(x, y, Color.FromArgb((int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100)));
+                    resultImages[1].SetPixel(x, y, Color.FromArgb((int)(128 + lab[1]), (int)(128 - lab[1]), 127));
+                    resultImages[2].SetPixel(x, y, Color.FromArgb((int)(128 + lab[2]), 127, (int)(128 - lab[2])));
+                }
+            }
+            
             return resultImages;
+        }
+
+        private double[,] MatrixM()
+        {
+            double xw = (double)whitePointXNumericUpDown.Value;
+            double yw = (double)whitePointYNumericUpDown.Value;
+            double zw = 1 - xw - yw;
+
+            double Xw = xw / yw;
+            double Yw = 1;
+            double Zw = zw / yw;
+
+
+            double[,] XYZMatrix = new double[3, 3];
+            XYZMatrix[0, 0] = (double)redXNumericUpDown.Value;
+            XYZMatrix[1, 0] = (double)redYNumericUpDown.Value;
+            XYZMatrix[2, 0] = 1 - XYZMatrix[0, 0] - XYZMatrix[1, 0];
+
+            XYZMatrix[0, 1] = (double)greenXNumericUpDown.Value;
+            XYZMatrix[1, 1] = (double)greenYNumericUpDown.Value;
+            XYZMatrix[2, 1] = 1 - XYZMatrix[0, 1] - XYZMatrix[1, 1];
+
+            XYZMatrix[0, 2] = (double)blueXNumericUpDown.Value;
+            XYZMatrix[1, 2] = (double)blueYNumericUpDown.Value;
+            XYZMatrix[2, 2] = 1 - XYZMatrix[0, 2] - XYZMatrix[1, 2];
+            double[,] InverseXYZMatrix = Matrix.MatrixInverse(XYZMatrix);
+
+            double Sr = InverseXYZMatrix[0, 0] * Xw + InverseXYZMatrix[0, 1] * Yw + InverseXYZMatrix[0, 2] * Zw;
+            double Sg = InverseXYZMatrix[1, 0] * Xw + InverseXYZMatrix[1, 1] * Yw + InverseXYZMatrix[1, 2] * Zw;
+            double Sb = InverseXYZMatrix[2, 0] * Xw + InverseXYZMatrix[2, 1] * Yw + InverseXYZMatrix[2, 2] * Zw;
+
+            double[,] matrixM = new double[3, 3];
+            matrixM[0, 0] = XYZMatrix[0, 0] * Sr;
+            matrixM[1, 0] = XYZMatrix[1, 0] * Sr;
+            matrixM[2, 0] = XYZMatrix[2, 0] * Sr;
+
+            matrixM[0, 1] = XYZMatrix[0, 1] * Sg;
+            matrixM[1, 1] = XYZMatrix[1, 1] * Sg;
+            matrixM[2, 1] = XYZMatrix[2, 1] * Sg;
+
+            matrixM[0, 2] = XYZMatrix[0, 2] * Sb;
+            matrixM[1, 2] = XYZMatrix[1, 2] * Sb;
+            matrixM[2, 2] = XYZMatrix[2, 2] * Sb;
+
+            return matrixM;
+        }
+
+        private double[] RgbToXyz(double R, double G, double B, double[,] matrixM)
+        {
+            double x = (matrixM[0, 0] * R + matrixM[0, 1] * G + matrixM[0, 2] * B) / Math.Pow(255, (double)gammaNumericUpDown.Value);
+            double y = (matrixM[1, 0] * R + matrixM[1, 1] * G + matrixM[1, 2] * B) / Math.Pow(255, (double)gammaNumericUpDown.Value);
+            double z = (matrixM[2, 0] * R + matrixM[2, 1] * G + matrixM[2, 2] * B) / Math.Pow(255, (double)gammaNumericUpDown.Value);
+
+            return new double[] { x, y, z };
+        }
+
+        private double[] XyzToLab(double[] xyz)
+        {
+            double xw = (double)whitePointXNumericUpDown.Value;
+            double yw = (double)whitePointYNumericUpDown.Value;
+            double zw = 1 - xw - yw;
+
+            double Xw = xw / yw;
+            double Yw = 1;
+            double Zw = zw / yw;
+
+            double e = 0.008856;
+            double k = 903.3;
+
+            double Xr = xyz[0] / Xw;
+            double Yr = xyz[1] / Yw;
+            double Zr = xyz[2] / Zw;
+
+            double fx, fy, fz;
+            if (Xr > e)
+                fx = Math.Cbrt(Xr);
+            else
+                fx = (k * Xr + 16) / 116;
+            if (Yr > e)
+                fy = Math.Cbrt(Yr);
+            else
+                fy = (k * Yr + 16) / 116;
+            if (Zr > e)
+                fz = Math.Cbrt(Zr);
+            else
+                fz = (k * Zr + 16) / 116;
+
+             double L = 116 * fy - 16;
+             double a = 500 * (fx - fy);
+             double b = 200 * (fy - fz);
+
+            return new double[] { L, a, b };
         }
 
         private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
