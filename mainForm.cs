@@ -26,7 +26,7 @@ namespace ColorSeparator
         {
             modelComboBox.SelectedIndex = 0;
 
-            IlluminantcomboBox.SelectedIndex = 3;
+            IlluminantcomboBox.SelectedIndex = 0;
             colorProfileComboBox.SelectedIndex = 0;
 
             redXNumericUpDown.Value = (decimal)0.64;
@@ -99,6 +99,39 @@ namespace ColorSeparator
             labSettingsGroupBox.Enabled = true;
         }
 
+        private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (_toneModel != ToneModel.None && _image != null)
+            {
+                var label = new string[] { "Greyscale" };
+                var resultImage = ToGreyscale();
+                if (resultImage != null)
+                {
+                    var resultForm = new ResultForm(label, new Image[] { resultImage });
+                    resultForm.ShowDialog();
+                }
+            }
+        }
+
+        private Image ToGreyscale()
+        {
+            var bitmap = new Bitmap(_image);
+            int width = bitmap.Width, height = bitmap.Height;
+            var resultImage = new Bitmap(_image);
+            
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    var color = bitmap.GetPixel(x, y);
+                    int gray = color.R / 3 + color.G / 3 + color.B / 3;
+                    resultImage.SetPixel(x, y, Color.FromArgb(gray, gray, gray));
+                }
+            }
+
+            return resultImage;
+        }
+
         private void separateChannelsButton_MouseDown(object sender, MouseEventArgs e)
         {
             if (_toneModel != ToneModel.None && _image != null)
@@ -118,21 +151,21 @@ namespace ColorSeparator
             {
                 case ToneModel.YCbCr:
                     {
-                        return useYCbCr();
+                        return UseYCbCr();
                     }
                 case ToneModel.HSV:
                     {
-                        return useHsv();
+                        return UseHsv();
                     }
                 case ToneModel.Lab:
                     {
-                        return useLab();
+                        return UseLab();
                     }
             }
             return null;
         }
 
-        private Image[] useYCbCr()
+        private Image[] UseYCbCr()
         {
             var bitmap = new Bitmap(_image);
             int width = bitmap.Width, height = bitmap.Height;
@@ -163,7 +196,7 @@ namespace ColorSeparator
             return resultImages;
         }
 
-        private Image[] useHsv()
+        private Image[] UseHsv()
         {
             double max, min, delta;
             var bitmap = new Bitmap(_image);
@@ -215,7 +248,7 @@ namespace ColorSeparator
             return resultImages;
         }
 
-        private Image[] useLab()
+        private Image[] UseLab()
         {
             var bitmap = new Bitmap(_image);
             int width = bitmap.Width, height = bitmap.Height;
@@ -234,9 +267,17 @@ namespace ColorSeparator
                     double[] xyz = RgbToXyz(Math.Pow(color.R, gamma), Math.Pow(color.G, gamma), Math.Pow(color.B, gamma), matrixM);
                     double[] lab = XyzToLab(xyz);
 
+                    lab[0] = Math.Min(100, lab[0]);
+                    lab[0] = Math.Max(0, lab[0]);
                     resultImages[0].SetPixel(x, y, Color.FromArgb((int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100)));
-                    resultImages[1].SetPixel(x, y, Color.FromArgb((int)(128 + lab[1]), (int)(128 - lab[1]), 127));
-                    resultImages[2].SetPixel(x, y, Color.FromArgb((int)(128 + lab[2]), 127, (int)(128 - lab[2])));
+
+                    lab[1] = Math.Min(127, lab[1]);
+                    lab[1] = Math.Max(-127, lab[1]);
+                    lab[2] = Math.Min(127, lab[2]);
+                    lab[2] = Math.Max(-127, lab[2]);
+       
+                    resultImages[1].SetPixel(x, y, Color.FromArgb((int)(128 + lab[1]), (int)(127 - lab[1]), 127));
+                    resultImages[2].SetPixel(x, y, Color.FromArgb((int)(128 + lab[2]), 128, (int)(127 - lab[2])));
                 }
             }
             
@@ -335,9 +376,175 @@ namespace ColorSeparator
             return new double[] { L, a, b };
         }
 
-        private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
+        private void colorProfileComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (colorProfileComboBox.Items[colorProfileComboBox.SelectedIndex].ToString())
+            {
+                case "sRGB":
+                    {
+                        SetSRGB();
+                        break;
+                    }
+                case "AdobeRGB":
+                    {
+                        SetAdobeRGB();
+                        break;
+                    }
+                case "AppleRGB":
+                    {
+                        SetAppleRGB();
+                        break;
+                    }
+                case "WideGamut":
+                    {
+                        SetWideGamut();
+                        break;
+                    }
+                case "CIERGB":
+                    {
+                        SetCIERGB();
+                        break;
+                    }
+            }
+        }
 
+        private void SetSRGB()
+        {
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
+
+            redXNumericUpDown.Value = (decimal)0.64;
+            redYNumericUpDown.Value = (decimal)0.33;
+            greenXNumericUpDown.Value = (decimal)0.3;
+            greenYNumericUpDown.Value = (decimal)0.6;
+            blueXNumericUpDown.Value = (decimal)0.15;
+            blueYNumericUpDown.Value = (decimal)0.06;
+
+            gammaNumericUpDown.Value = (decimal)2.20;
+        }
+
+        private void SetAdobeRGB()
+        {
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
+
+            redXNumericUpDown.Value = (decimal)0.64;
+            redYNumericUpDown.Value = (decimal)0.33;
+            greenXNumericUpDown.Value = (decimal)0.21;
+            greenYNumericUpDown.Value = (decimal)0.71;
+            blueXNumericUpDown.Value = (decimal)0.15;
+            blueYNumericUpDown.Value = (decimal)0.06;
+
+            gammaNumericUpDown.Value = (decimal)2.20;
+        }
+
+        private void SetAppleRGB()
+        {
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
+
+            redXNumericUpDown.Value = (decimal)0.625;
+            redYNumericUpDown.Value = (decimal)0.34;
+            greenXNumericUpDown.Value = (decimal)0.28;
+            greenYNumericUpDown.Value = (decimal)0.595;
+            blueXNumericUpDown.Value = (decimal)0.155;
+            blueYNumericUpDown.Value = (decimal)0.07;
+
+            gammaNumericUpDown.Value = (decimal)1.8;
+        }
+
+        private void SetWideGamut()
+        {
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D50");
+
+            redXNumericUpDown.Value = (decimal)0.7347;
+            redYNumericUpDown.Value = (decimal)0.2653;
+            greenXNumericUpDown.Value = (decimal)0.1152;
+            greenYNumericUpDown.Value = (decimal)0.8264;
+            blueXNumericUpDown.Value = (decimal)0.1566;
+            blueYNumericUpDown.Value = (decimal)0.0177;
+
+            gammaNumericUpDown.Value = (decimal)1.2;
+        }
+
+        private void SetCIERGB()
+        {
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("E");
+
+            redXNumericUpDown.Value = (decimal)0.735;
+            redYNumericUpDown.Value = (decimal)0.265;
+            greenXNumericUpDown.Value = (decimal)0.274;
+            greenYNumericUpDown.Value = (decimal)0.717;
+            blueXNumericUpDown.Value = (decimal)0.167;
+            blueYNumericUpDown.Value = (decimal)0.007;
+
+
+            gammaNumericUpDown.Value = (decimal)2.2;
+        }
+
+        private void IlluminantcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (IlluminantcomboBox.Items[IlluminantcomboBox.SelectedIndex].ToString())
+            {
+                case "A":
+                    {
+                        SetA();
+                        break;
+                    }
+                case "B":
+                    {
+                        SetB();
+                        break;
+                    }
+                case "C":
+                    {
+                        SetC();
+                        break;
+                    }
+                case "D50":
+                    {
+                        SetD50();
+                        break;
+                    }
+                case "D65":
+                    {
+                        SetD65();
+                        break;
+                    }
+                case "E":
+                    {
+                        SetE();
+                        break;
+                    }
+            }
+        }
+
+        private void SetA()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.44757;
+            whitePointYNumericUpDown.Value = (decimal)0.40745;
+        }
+        private void SetB()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.34842;
+            whitePointYNumericUpDown.Value = (decimal)0.35161;
+        }
+        private void SetC()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.31006;
+            whitePointYNumericUpDown.Value = (decimal)0.31616;
+        }
+        private void SetD50()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.34567;
+            whitePointYNumericUpDown.Value = (decimal)0.35850;
+        }
+        private void SetD65()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.31273;
+            whitePointYNumericUpDown.Value = (decimal)0.32902;
+        }
+        private void SetE()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.333333;
+            whitePointYNumericUpDown.Value = (decimal)0.333333;
         }
     }
 }

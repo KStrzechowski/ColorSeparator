@@ -267,17 +267,15 @@ namespace ColorSeparator
                     double[] xyz = RgbToXyz(Math.Pow(color.R, gamma), Math.Pow(color.G, gamma), Math.Pow(color.B, gamma), matrixM);
                     double[] lab = XyzToLab(xyz);
 
+                    lab[0] = Math.Min(100, lab[0]);
+                    lab[0] = Math.Max(0, lab[0]);
                     resultImages[0].SetPixel(x, y, Color.FromArgb((int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100), (int)(lab[0] * 255 / 100)));
-                    
-                    if (lab[1] > 127)
-                        lab[1] = 127;
-                    if (lab[2] > 127)
-                        lab[1] = 127;
 
-                    if (lab[1] < -127)
-                        lab[1] = -127;
-                    if (lab[2] < -127)
-                        lab[2] = -127;
+                    lab[1] = Math.Min(127, lab[1]);
+                    lab[1] = Math.Max(-127, lab[1]);
+                    lab[2] = Math.Min(127, lab[2]);
+                    lab[2] = Math.Max(-127, lab[2]);
+       
                     resultImages[1].SetPixel(x, y, Color.FromArgb((int)(128 + lab[1]), (int)(127 - lab[1]), 127));
                     resultImages[2].SetPixel(x, y, Color.FromArgb((int)(128 + lab[2]), 128, (int)(127 - lab[2])));
                 }
@@ -412,7 +410,7 @@ namespace ColorSeparator
 
         private void SetSRGB()
         {
-            IlluminantcomboBox.SelectedIndex = 0;
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
 
             redXNumericUpDown.Value = (decimal)0.64;
             redYNumericUpDown.Value = (decimal)0.33;
@@ -421,14 +419,12 @@ namespace ColorSeparator
             blueXNumericUpDown.Value = (decimal)0.15;
             blueYNumericUpDown.Value = (decimal)0.06;
 
-            whitePointXNumericUpDown.Value = (decimal)0.31273;
-            whitePointYNumericUpDown.Value = (decimal)0.32902;
             gammaNumericUpDown.Value = (decimal)2.20;
         }
 
         private void SetAdobeRGB()
         {
-            IlluminantcomboBox.SelectedIndex = 0;
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
 
             redXNumericUpDown.Value = (decimal)0.64;
             redYNumericUpDown.Value = (decimal)0.33;
@@ -437,14 +433,12 @@ namespace ColorSeparator
             blueXNumericUpDown.Value = (decimal)0.15;
             blueYNumericUpDown.Value = (decimal)0.06;
 
-            whitePointXNumericUpDown.Value = (decimal)0.31273;
-            whitePointYNumericUpDown.Value = (decimal)0.32902;
             gammaNumericUpDown.Value = (decimal)2.20;
         }
 
         private void SetAppleRGB()
         {
-            IlluminantcomboBox.SelectedIndex = 0;
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D65");
 
             redXNumericUpDown.Value = (decimal)0.625;
             redYNumericUpDown.Value = (decimal)0.34;
@@ -453,14 +447,12 @@ namespace ColorSeparator
             blueXNumericUpDown.Value = (decimal)0.155;
             blueYNumericUpDown.Value = (decimal)0.07;
 
-            whitePointXNumericUpDown.Value = (decimal)0.31273;
-            whitePointYNumericUpDown.Value = (decimal)0.32902;
             gammaNumericUpDown.Value = (decimal)1.8;
         }
 
         private void SetWideGamut()
         {
-            IlluminantcomboBox.SelectedIndex = 1;
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("D50");
 
             redXNumericUpDown.Value = (decimal)0.7347;
             redYNumericUpDown.Value = (decimal)0.2653;
@@ -469,14 +461,12 @@ namespace ColorSeparator
             blueXNumericUpDown.Value = (decimal)0.1566;
             blueYNumericUpDown.Value = (decimal)0.0177;
 
-            whitePointXNumericUpDown.Value = (decimal)0.34567;
-            whitePointYNumericUpDown.Value = (decimal)0.35850;
             gammaNumericUpDown.Value = (decimal)1.2;
         }
 
         private void SetCIERGB()
         {
-            IlluminantcomboBox.SelectedIndex = 2;
+            IlluminantcomboBox.SelectedIndex = IlluminantcomboBox.Items.IndexOf("E");
 
             redXNumericUpDown.Value = (decimal)0.735;
             redYNumericUpDown.Value = (decimal)0.265;
@@ -485,9 +475,76 @@ namespace ColorSeparator
             blueXNumericUpDown.Value = (decimal)0.167;
             blueYNumericUpDown.Value = (decimal)0.007;
 
+
+            gammaNumericUpDown.Value = (decimal)2.2;
+        }
+
+        private void IlluminantcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (IlluminantcomboBox.Items[IlluminantcomboBox.SelectedIndex].ToString())
+            {
+                case "A":
+                    {
+                        SetA();
+                        break;
+                    }
+                case "B":
+                    {
+                        SetB();
+                        break;
+                    }
+                case "C":
+                    {
+                        SetC();
+                        break;
+                    }
+                case "D50":
+                    {
+                        SetD50();
+                        break;
+                    }
+                case "D65":
+                    {
+                        SetD65();
+                        break;
+                    }
+                case "E":
+                    {
+                        SetE();
+                        break;
+                    }
+            }
+        }
+
+        private void SetA()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.44757;
+            whitePointYNumericUpDown.Value = (decimal)0.40745;
+        }
+        private void SetB()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.34842;
+            whitePointYNumericUpDown.Value = (decimal)0.35161;
+        }
+        private void SetC()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.31006;
+            whitePointYNumericUpDown.Value = (decimal)0.31616;
+        }
+        private void SetD50()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.34567;
+            whitePointYNumericUpDown.Value = (decimal)0.35850;
+        }
+        private void SetD65()
+        {
+            whitePointXNumericUpDown.Value = (decimal)0.31273;
+            whitePointYNumericUpDown.Value = (decimal)0.32902;
+        }
+        private void SetE()
+        {
             whitePointXNumericUpDown.Value = (decimal)0.333333;
             whitePointYNumericUpDown.Value = (decimal)0.333333;
-            gammaNumericUpDown.Value = (decimal)2.2;
         }
     }
 }

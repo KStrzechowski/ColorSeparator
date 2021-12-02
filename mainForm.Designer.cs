@@ -33,7 +33,7 @@ namespace ColorSeparator
             this.optionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.greyscaleButton = new System.Windows.Forms.Button();
             this.labSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.chromaticityTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.chromaticityLabel = new System.Windows.Forms.Label();
             this.xLabel = new System.Windows.Forms.Label();
             this.yLabel = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@ namespace ColorSeparator
             this.whitePointYNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.gammaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.gammaLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.predefinedTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.IlluminantcomboBox = new System.Windows.Forms.ComboBox();
             this.illuminantLabel = new System.Windows.Forms.Label();
             this.colorProfileLabel = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@ namespace ColorSeparator
             this.mainTableLayoutPanel.SuspendLayout();
             this.optionsTableLayoutPanel.SuspendLayout();
             this.labSettingsGroupBox.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.chromaticityTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.redXNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.redYNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.greenXNumericUpDown)).BeginInit();
@@ -73,7 +73,7 @@ namespace ColorSeparator
             ((System.ComponentModel.ISupportInitialize)(this.whitePointXNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointYNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaNumericUpDown)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.predefinedTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,8 +139,8 @@ namespace ColorSeparator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.optionsTableLayoutPanel.SetColumnSpan(this.labSettingsGroupBox, 2);
-            this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel2);
-            this.labSettingsGroupBox.Controls.Add(this.tableLayoutPanel1);
+            this.labSettingsGroupBox.Controls.Add(this.chromaticityTableLayoutPanel);
+            this.labSettingsGroupBox.Controls.Add(this.predefinedTableLayoutPanel);
             this.labSettingsGroupBox.Enabled = false;
             this.labSettingsGroupBox.Location = new System.Drawing.Point(5, 186);
             this.labSettingsGroupBox.Name = "labSettingsGroupBox";
@@ -149,46 +149,46 @@ namespace ColorSeparator
             this.labSettingsGroupBox.TabStop = false;
             this.labSettingsGroupBox.Text = "Lab Settings";
             // 
-            // tableLayoutPanel2
+            // chromaticityTableLayoutPanel
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chromaticityTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.chromaticityLabel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.xLabel, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.yLabel, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.redLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.greenLabel, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.redXNumericUpDown, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.blueLabel, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.whitePointLabel, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.redYNumericUpDown, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.greenXNumericUpDown, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.greenYNumericUpDown, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.blueXNumericUpDown, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.blueYNumericUpDown, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.whitePointXNumericUpDown, 1, 4);
-            this.tableLayoutPanel2.Controls.Add(this.whitePointYNumericUpDown, 2, 4);
-            this.tableLayoutPanel2.Controls.Add(this.gammaNumericUpDown, 2, 5);
-            this.tableLayoutPanel2.Controls.Add(this.gammaLabel, 1, 5);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 142);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 6;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(261, 225);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.chromaticityTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chromaticityTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.chromaticityTableLayoutPanel.ColumnCount = 3;
+            this.chromaticityTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.chromaticityTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.chromaticityTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.chromaticityTableLayoutPanel.Controls.Add(this.chromaticityLabel, 0, 0);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.xLabel, 1, 0);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.yLabel, 2, 0);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.redLabel, 0, 1);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.greenLabel, 0, 2);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.redXNumericUpDown, 1, 1);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.blueLabel, 0, 3);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.whitePointLabel, 0, 4);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.redYNumericUpDown, 2, 1);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.greenXNumericUpDown, 1, 2);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.greenYNumericUpDown, 2, 2);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.blueXNumericUpDown, 1, 3);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.blueYNumericUpDown, 2, 3);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.whitePointXNumericUpDown, 1, 4);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.whitePointYNumericUpDown, 2, 4);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.gammaNumericUpDown, 2, 5);
+            this.chromaticityTableLayoutPanel.Controls.Add(this.gammaLabel, 1, 5);
+            this.chromaticityTableLayoutPanel.Location = new System.Drawing.Point(0, 142);
+            this.chromaticityTableLayoutPanel.Name = "chromaticityTableLayoutPanel";
+            this.chromaticityTableLayoutPanel.RowCount = 6;
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.chromaticityTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.chromaticityTableLayoutPanel.Size = new System.Drawing.Size(261, 225);
+            this.chromaticityTableLayoutPanel.TabIndex = 1;
             // 
             // chromaticityLabel
             // 
@@ -530,7 +530,7 @@ namespace ColorSeparator
             131072});
             this.gammaNumericUpDown.Location = new System.Drawing.Point(176, 189);
             this.gammaNumericUpDown.Maximum = new decimal(new int[] {
-            3,
+            30,
             0,
             0,
             0});
@@ -563,43 +563,45 @@ namespace ColorSeparator
             this.gammaLabel.Text = "Gamma";
             this.gammaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel1
+            // predefinedTableLayoutPanel
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.predefinedTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.IlluminantcomboBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.illuminantLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.colorProfileLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.colorProfileComboBox, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 26);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(258, 103);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.predefinedTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.predefinedTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.predefinedTableLayoutPanel.ColumnCount = 2;
+            this.predefinedTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.predefinedTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.predefinedTableLayoutPanel.Controls.Add(this.IlluminantcomboBox, 1, 1);
+            this.predefinedTableLayoutPanel.Controls.Add(this.illuminantLabel, 0, 1);
+            this.predefinedTableLayoutPanel.Controls.Add(this.colorProfileLabel, 0, 0);
+            this.predefinedTableLayoutPanel.Controls.Add(this.colorProfileComboBox, 1, 0);
+            this.predefinedTableLayoutPanel.Location = new System.Drawing.Point(0, 26);
+            this.predefinedTableLayoutPanel.Name = "predefinedTableLayoutPanel";
+            this.predefinedTableLayoutPanel.RowCount = 2;
+            this.predefinedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
+            this.predefinedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
+            this.predefinedTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.predefinedTableLayoutPanel.Size = new System.Drawing.Size(258, 103);
+            this.predefinedTableLayoutPanel.TabIndex = 0;
             // 
             // IlluminantcomboBox
             // 
             this.IlluminantcomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.IlluminantcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.IlluminantcomboBox.Items.AddRange(new object[] {
-            "D65",
-            "D50",
-            "E",
             "A",
-            "B"});
+            "B",
+            "C",
+            "D50",
+            "D65",
+            "E"});
             this.IlluminantcomboBox.Location = new System.Drawing.Point(132, 62);
             this.IlluminantcomboBox.Name = "IlluminantcomboBox";
             this.IlluminantcomboBox.Size = new System.Drawing.Size(122, 28);
             this.IlluminantcomboBox.TabIndex = 10;
+            this.IlluminantcomboBox.SelectedIndexChanged += new System.EventHandler(this.IlluminantcomboBox_SelectedIndexChanged);
             // 
             // illuminantLabel
             // 
@@ -712,8 +714,8 @@ namespace ColorSeparator
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.optionsTableLayoutPanel.ResumeLayout(false);
             this.labSettingsGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.chromaticityTableLayoutPanel.ResumeLayout(false);
+            this.chromaticityTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.redXNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.redYNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.greenXNumericUpDown)).EndInit();
@@ -723,8 +725,8 @@ namespace ColorSeparator
             ((System.ComponentModel.ISupportInitialize)(this.whitePointXNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whitePointYNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaNumericUpDown)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.predefinedTableLayoutPanel.ResumeLayout(false);
+            this.predefinedTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -740,8 +742,8 @@ namespace ColorSeparator
         private System.Windows.Forms.Button separateChannelsButton;
         private System.Windows.Forms.Button loadImageButton;
         private System.Windows.Forms.ComboBox modelComboBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel chromaticityTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel predefinedTableLayoutPanel;
         private System.Windows.Forms.Label colorProfileLabel;
         private System.Windows.Forms.Label chromaticityLabel;
         private System.Windows.Forms.Label xLabel;
