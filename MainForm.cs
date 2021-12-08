@@ -99,11 +99,11 @@ namespace ColorSeparator
             labSettingsGroupBox.Enabled = true;
         }
 
-        private void greyscaleButton_MouseDown(object sender, MouseEventArgs e)
+        private void grayscaleButton_MouseDown(object sender, MouseEventArgs e)
         {
             if (_toneModel != ToneModel.None && _image != null)
             {
-                var label = new string[] { "Greyscale" };
+                var label = new string[] { "Grayscale" };
                 var resultImage = ToGreyscale();
                 if (resultImage != null)
                 {
@@ -231,7 +231,7 @@ namespace ColorSeparator
                     if (V == 0)
                         S = 0;
                     else
-                        S = delta / 255 / V;
+                        S = delta / max;
 
                     if (H < 0)
                         H += 360;

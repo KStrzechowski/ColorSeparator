@@ -105,5 +105,37 @@ namespace ColorSeparator
             for (int i = 3; i < n; i++)
                 mainTableLayoutPanel.RowStyles[i].Height = _bitmap[i].Height;
         }
+
+        private void applyButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            foreach (var bitmap in _bitmap)
+            {
+                for (int x = 0; x < bitmap.Width; x++)
+                {
+                    for (int y = 0; y < bitmap.Height; y++)
+                    {
+                        var color = bitmap.GetPixel(x, y);
+                        color = ApplyMatrix(color);
+                        bitmap.SetPixel(x, y, color);
+                    }
+                }
+            }
+            ShowResults();
+        }
+
+        private Color ApplyMatrix(Color color)
+        {
+            int R = (int)(numericUpDown11.Value * color.R + numericUpDown12.Value * color.G + numericUpDown13.Value * color.B);
+            int G = (int)(numericUpDown21.Value * color.R + numericUpDown22.Value * color.G + numericUpDown23.Value * color.B);
+            int B = (int)(numericUpDown31.Value * color.R + numericUpDown32.Value * color.G + numericUpDown33.Value * color.B);
+            R = Math.Max(R, 0);
+            R = Math.Min(R, 255);
+            G = Math.Max(G, 0);
+            G = Math.Min(G, 255);
+            B = Math.Max(B, 0);
+            B = Math.Min(B, 255);
+
+            return Color.FromArgb(R, G, B);
+        }
     }
 }

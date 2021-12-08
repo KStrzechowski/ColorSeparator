@@ -31,7 +31,7 @@ namespace ColorSeparator
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.greyscaleButton = new System.Windows.Forms.Button();
+            this.grayscaleButton = new System.Windows.Forms.Button();
             this.labSettingsGroupBox = new System.Windows.Forms.GroupBox();
             this.chromaticityTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.chromaticityLabel = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@ namespace ColorSeparator
             this.optionsTableLayoutPanel.ColumnCount = 2;
             this.optionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.optionsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.optionsTableLayoutPanel.Controls.Add(this.greyscaleButton, 0, 0);
+            this.optionsTableLayoutPanel.Controls.Add(this.grayscaleButton, 0, 0);
             this.optionsTableLayoutPanel.Controls.Add(this.labSettingsGroupBox, 0, 4);
             this.optionsTableLayoutPanel.Controls.Add(this.separateChannelsButton, 0, 3);
             this.optionsTableLayoutPanel.Controls.Add(this.loadImageButton, 0, 1);
@@ -120,18 +120,18 @@ namespace ColorSeparator
             this.optionsTableLayoutPanel.Size = new System.Drawing.Size(271, 553);
             this.optionsTableLayoutPanel.TabIndex = 0;
             // 
-            // greyscaleButton
+            // grayscaleButton
             // 
-            this.greyscaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grayscaleButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optionsTableLayoutPanel.SetColumnSpan(this.greyscaleButton, 2);
-            this.greyscaleButton.Location = new System.Drawing.Point(5, 5);
-            this.greyscaleButton.Name = "greyscaleButton";
-            this.greyscaleButton.Size = new System.Drawing.Size(261, 27);
-            this.greyscaleButton.TabIndex = 3;
-            this.greyscaleButton.Text = "To Greyscale";
-            this.greyscaleButton.UseVisualStyleBackColor = true;
-            this.greyscaleButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.greyscaleButton_MouseDown);
+            this.optionsTableLayoutPanel.SetColumnSpan(this.grayscaleButton, 2);
+            this.grayscaleButton.Location = new System.Drawing.Point(5, 5);
+            this.grayscaleButton.Name = "grayscaleButton";
+            this.grayscaleButton.Size = new System.Drawing.Size(261, 27);
+            this.grayscaleButton.TabIndex = 3;
+            this.grayscaleButton.Text = "To Grayscale";
+            this.grayscaleButton.UseVisualStyleBackColor = true;
+            this.grayscaleButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grayscaleButton_MouseDown);
             // 
             // labSettingsGroupBox
             // 
@@ -710,7 +710,7 @@ namespace ColorSeparator
             this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Color Separator";
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.optionsTableLayoutPanel.ResumeLayout(false);
             this.labSettingsGroupBox.ResumeLayout(false);
@@ -737,7 +737,7 @@ namespace ColorSeparator
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.PictureBox mainPictureBox;
         private System.Windows.Forms.TableLayoutPanel optionsTableLayoutPanel;
-        private System.Windows.Forms.Button greyscaleButton;
+        private System.Windows.Forms.Button grayscaleButton;
         private System.Windows.Forms.GroupBox labSettingsGroupBox;
         private System.Windows.Forms.Button separateChannelsButton;
         private System.Windows.Forms.Button loadImageButton;
